@@ -1,24 +1,13 @@
 
-using System.Collections.Generic;
-using LoanBook.Endpoint;
-
 namespace LoanBook.PaymentGateway.Endpoint
 {
-    using System;
-
     using NServiceBus;
-	
-	public class EndpointConfig : IConfigureThisEndpoint, AsA_Publisher, IWantToRunWhenBusStartsAndStops
-	{
-        public void Start()
-        {
-            Console.Clear();
-            Console.Title = "Payment gateway";
-        }
 
-        public void Stop()
-        {
-
-        }
+	/*
+		This class configures this endpoint as a Server. More information about how to configure the NServiceBus host
+		can be found here: http://particular.net/articles/the-nservicebus-host
+	*/
+	public class EndpointConfig : IConfigureThisEndpoint, AsA_Server
+    {
     }
 }

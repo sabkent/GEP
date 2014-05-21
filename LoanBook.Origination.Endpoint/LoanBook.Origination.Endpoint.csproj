@@ -50,19 +50,19 @@
     </Reference>
     <Reference Include="NServiceBus, Version=4.5.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NServiceBus.Interfaces.4.5.1\lib\net40\NServiceBus.dll</HintPath>
+      <HintPath>..\packages\NServiceBus.Interfaces.4.6.1\lib\net40\NServiceBus.dll</HintPath>
     </Reference>
     <Reference Include="NServiceBus.Core, Version=4.5.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NServiceBus.4.5.1\lib\net40\NServiceBus.Core.dll</HintPath>
+      <HintPath>..\packages\NServiceBus.4.6.1\lib\net40\NServiceBus.Core.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus.Host, Version=4.4.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+    <Reference Include="NServiceBus.Host, Version=4.6.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NServiceBus.Host.4.4.2\lib\net40\NServiceBus.Host.exe</HintPath>
+      <HintPath>..\packages\NServiceBus.Host.4.6.1\lib\net40\NServiceBus.Host.exe</HintPath>
     </Reference>
-    <Reference Include="NServiceBus.ObjectBuilder.Autofac, Version=4.4.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+    <Reference Include="NServiceBus.ObjectBuilder.Autofac, Version=4.6.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NServiceBus.Autofac.4.4.2\lib\net40\NServiceBus.ObjectBuilder.Autofac.dll</HintPath>
+      <HintPath>..\packages\NServiceBus.Autofac.4.6.1\lib\net40\NServiceBus.ObjectBuilder.Autofac.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -122,6 +122,10 @@
     <ProjectReference Include="..\LoanBook.Fraud.Messaging\LoanBook.Fraud.Messaging.csproj">
       <Project>{cb5e9b6b-dd9f-49ac-8078-7f7e02e95517}</Project>
       <Name>LoanBook.Fraud.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoanBook.Infrastructure\LoanBook.Infrastructure.csproj">
+      <Project>{9e0920b4-4a80-4fb0-8b01-93cc9a47aeff}</Project>
+      <Name>LoanBook.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\LoanBook.Origination.Core\LoanBook.Origination.Core.csproj">
       <Project>{92CBBE46-E410-46A0-97DF-34E5282FDE5C}</Project>

@@ -20,7 +20,10 @@ namespace LoanBook.Endpoint
             while (true)
             {
                 var command = Console.ReadLine();
-                var commandName = command.Substring(0, command.IndexOf(' '));
+                var length = command.IndexOf(' ');
+                if (length == -1) length = command.Length;
+
+                var commandName = command.Substring(0, length);
 
                 var args = command.Replace(commandName, String.Empty).Trim();
 
