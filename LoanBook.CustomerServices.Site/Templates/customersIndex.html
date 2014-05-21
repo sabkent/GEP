@@ -1,0 +1,13 @@
+﻿<div class="progress progress-striped active" data-ng-show="isBusy">
+    <div class="bar" style="width:100%"></div>
+</div>
+
+
+<div data-ng-controller="controllers.customersIndexController as controller">
+    <a data-ng-click="controller.search()">search</a>
+    do sum ting <span>{{ name }}</span>
+
+    <div data-ng-repeat="customer in customers">
+        {{ customer.FirstName }}
+    </div>
+</div>

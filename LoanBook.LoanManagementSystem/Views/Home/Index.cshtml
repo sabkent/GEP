@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Origination</h2>
+        <p>
+            <input id="guid" type="text" value="@Guid.NewGuid().ToString()" />
+            <input id="submitApplication" type="button" value="Submit application"/>
+            <input id="signLoan" type="button" value="sign loan" />
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Collections</h2>
+        <input id="collectDebt" type="button" value="Collect debt"/>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+<script src="~/Scripts/jquery-2.1.0.min.js"></script>
+<script>
+    $(function() {
+        $('#submitApplication').on('click', function() {
+            $.ajax({ url: '/api/origination', type: 'POST', data: { "id": $('#guid').val() } });
+        });
+        $('#collectDebt').on('click', function() {
+            $.ajax({ url: '/home/collectdebt' });
+        });
+        $('#signLoan').on('click', function() {
+            $.ajax({ url: '/home/signloan' });
+        });
+    });
+</script>

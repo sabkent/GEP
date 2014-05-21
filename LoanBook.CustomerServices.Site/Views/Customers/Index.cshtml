@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    ViewBag.AngularModule = "customersIndex";
+}
+
+<div data-ng-app="@ViewBag.AngularModule">
+    
+    <div data-ng-view=""></div>
+
+    @*<div class="progress progress-striped active" data-ng-show="isBusy">
+        <div class="bar" style="width:100%"></div>
+    </div>
+    <div data-ng-controller="controllers.customersIndexController">
+        do sum ting <span>{{ name }}</span>
+        
+        <div data-ng-repeat="customer in customers">
+            {{ customer.FirstName }}
+        </div>
+    </div>*@
+
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/Scripts/app/customers-index.js"></script>    
+    
+    <script>
+        //var app = angular.module('customerServices', []);
+
+        //app.controller('customersIndexController', function($scope) {
+        //    console.log("coded");
+        //});
+    </script>
+}
