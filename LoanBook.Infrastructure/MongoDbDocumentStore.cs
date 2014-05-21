@@ -3,10 +3,11 @@
     using System;
     using System.Collections.Generic;
     using System.Configuration;
+    using System.Linq;
     using System.Linq.Expressions;
 
-    using MongoDB.Driver;
-    using MongoDB.Driver.Builders;
+    using MongoDB.Driver;    
+    using MongoDB.Driver.Linq;
 
     public sealed class MongoDbDocumentStore : IDocumentStore
     {
@@ -25,7 +26,8 @@
         public IEnumerable<T> Get<T>(Expression<Func<T, bool>> query)
         {
             var collection = _mongoDatabase.GetCollection<T>(typeof(T).ToString());
-            return collection.Find(Query<T>.Where(query));
+            return collection.AsQueryable().Where(query.Compile()).ToList();
+            //return collection.Find(Query<T>.Where(query));
         }
 
         public void Save<T>(T projection)
