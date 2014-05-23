@@ -197,6 +197,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LoanBook.Api\LoanBook.Api.csproj">
+      <Project>{c6e561fa-ba42-485e-b6ab-d0d29374e337}</Project>
+      <Name>LoanBook.Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LoanBook.Correspondence.Core\LoanBook.Correspondence.Core.csproj">
       <Project>{560ef7d6-66d9-434c-a1a7-4fd6adea0735}</Project>
       <Name>LoanBook.Correspondence.Core</Name>

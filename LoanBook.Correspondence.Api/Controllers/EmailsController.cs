@@ -10,6 +10,7 @@
 
     using LoanBook.Correspondence.Core;
     using LoanBook.Infrastructure;
+    using LoanBook.Api;
 
     public class EmailsController : ApiController
     {
