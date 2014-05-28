@@ -78,3 +78,5 @@ LoanBook.ProductConfiguration.Endpoint/obj/*
 LoanBook.ProductConfiguration.Messaging/bin/*
 LoanBook.ProductConfiguration.Messaging/obj/*
 obj/*
+LoanBook.Api/bin/*
+LoanBook.Api/obj/*
