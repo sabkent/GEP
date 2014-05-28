@@ -10,7 +10,6 @@ LoanBook.Correspondence.Api/bin/*
 LoanBook.Correspondence.Api/obj/*
 LoanBook.Correspondence.Core/bin/*
 LoanBook.Correspondence.Core/obj/*
-LoanBook.Correspondence.Endpoint/*
 LoanBook.Correspondence.Infrastructure.ExchangeMailServerProvider/bin/*
 LoanBook.Correspondence.Infrastructure.ExchangeMailServerProvider/obj/*
 LoanBook.Correspondence.Infrastructure/bin/*
@@ -80,3 +79,5 @@ LoanBook.ProductConfiguration.Messaging/obj/*
 obj/*
 LoanBook.Api/bin/*
 LoanBook.Api/obj/*
+LoanBook.Correspondence.Endpoint/bin/*
+LoanBook.Correspondence.Endpoint/obj/*
