@@ -8,11 +8,26 @@ using LoanBook.Origination.Messaging.Commands;
 
 namespace LoanBook.LoanManagementSystem.Controllers
 {
+    using LoanBook.LoanManagementSystem.Hubs;
+
+    using Microsoft.AspNet.SignalR;
+
+    using Thinktecture.IdentityModel.Client;
+
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(string cot)
+        {
+            var client = new OAuth2Client(new Uri("http://localhost:3333/core/connect/authorize"));
+            var url = client.CreateCodeFlowUrl("loanbook", "openid", "http://localhost:22177/callback/", "123");
+
+            return this.Redirect(url);
         }
 
         public void SubmitApplication()
@@ -28,6 +43,11 @@ namespace LoanBook.LoanManagementSystem.Controllers
         public void SignLoan(Guid applicationId)
         {
             MvcApplication.Bus.Send(new SignAgreement {ApplicationId = applicationId});
+        }
+
+        public void SignalR()
+        {
+            GlobalHost.ConnectionManager.GetHubContext<MyHub>().Clients.All.callbackFunction();
         }
     }
 }

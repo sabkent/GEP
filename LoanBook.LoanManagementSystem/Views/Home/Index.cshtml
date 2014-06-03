@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="row">
+<div ng-app="myApp" class="row">
     <div class="col-md-4">
         <h2>Origination</h2>
         <p>
@@ -12,16 +12,26 @@
         </p>
     </div>
     <div class="col-md-4">
-        <h2>Collections</h2>
         <input id="collectDebt" type="button" value="Collect debt"/>
+        <input id="signalr" type="button" value="signalr callback"/>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" ng-controller="homeController">
         <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        @using (Html.BeginForm())
+        {
+            <input type="submit" value="login" />
+        }
+        <span>{{title}}</span>
+        <input type="button" ng-click="someFunction()"/>
+        <div ng-repeat="item in data track by $index">
+            {{item}}
+        </div>
     </div>
 </div>
 <script src="~/Scripts/jquery-2.1.0.min.js"></script>
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/Scripts/jquery.signalR-2.0.3.min.js"></script>
+<script src="/signalr/hubs"></script>
 <script>
     $(function() {
         $('#submitApplication').on('click', function() {
@@ -30,8 +40,55 @@
         $('#collectDebt').on('click', function() {
             $.ajax({ url: '/home/collectdebt' });
         });
+        $('#signalr').on('click', function() {
+            $.ajax({ url: '/home/signalr' });
+        });
         $('#signLoan').on('click', function() {
             $.ajax({ url: '/home/signloan' });
         });
     });
+
+
+    //var myHub = $.connection.myHub;
+    //myHub.client.callbackFunction = function() {
+    //    console.log("call back");
+    //};
+    //$.connection.hub.start();
+
+    var app = angular.module('myApp', []);
+
+    (function(ng, app, signalr) {
+        function homeController($scope, $http) {
+            this.http = $http;
+            this.scope = $scope;
+            this.hub = signalr.myHub;
+            this.hub.client.callbackFunction = ng.bind(this, this.callbackFunction);
+
+            $scope.data = ["one", "two", "three"];
+            $scope.title = "Title";
+            $scope.someFunction = ng.bind(this, this.someFunction);
+
+            signalr.hub.start();
+            return this;
+        };
+
+        homeController.prototype = {
+            someFunction: function () {
+                this.http.get('/api/origination').success(ng.bind(this, this.dataDownload));
+            },
+            dataDownload: function (data, status, headers, config) {
+                this.scope.data.push(data.FirstName);
+                console.log(this.scope);
+            },
+            callbackFunction: function () {
+                var self = this;
+                this.scope.$apply(function() {
+                    self.scope.data.push('signal');
+                });
+            }
+        };
+
+        app.controller('homeController', homeController);
+    })(angular, app, $.connection);
+
 </script>

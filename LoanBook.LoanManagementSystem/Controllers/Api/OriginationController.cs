@@ -13,7 +13,7 @@ namespace LoanBook.LoanManagementSystem.Controllers.Api
     {
         public HttpResponseMessage Get()
         {
-            return Request.CreateResponse(HttpStatusCode.OK);
+            return Request.CreateResponse(HttpStatusCode.OK, new { FirstName = "bob" });
         }
 
         public HttpResponseMessage Post(Origination origination)
