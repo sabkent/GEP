@@ -26,7 +26,7 @@ namespace LoanBook.LoanManagementSystem
             Bus = Configure.With()
                     .DefaultBuilder()
                     .UnicastBus()
-                    .DefiningCommandsAs(t=>t.Namespace != null && t.Namespace.EndsWith("Commands"))
+                    .DefiningCommandsAs(t => t.Namespace != null && t.Namespace.EndsWith("Commands"))
                     .CreateBus()
                     .Start(() => Configure.Instance.ForInstallationOn<Windows>());
         }

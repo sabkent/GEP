@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using LoanBook.Collections.Messaging.Commands;
-using LoanBook.Origination.Messaging.Commands;
-
-namespace LoanBook.LoanManagementSystem.Controllers
+﻿namespace LoanBook.LoanManagementSystem.Controllers
 {
+    using System;
+    using System.Web.Mvc;
+    using LoanBook.Collections.Messaging.Commands;
+    using LoanBook.Origination.Messaging.Commands;
     using LoanBook.LoanManagementSystem.Hubs;
 
     using Microsoft.AspNet.SignalR;
@@ -28,6 +24,12 @@ namespace LoanBook.LoanManagementSystem.Controllers
             var url = client.CreateCodeFlowUrl("loanbook", "openid", "http://localhost:22177/callback/", "123");
 
             return this.Redirect(url);
+        }
+
+        [System.Web.Mvc.Authorize]
+        public ActionResult Secured()
+        {
+            return View();
         }
 
         public void SubmitApplication()

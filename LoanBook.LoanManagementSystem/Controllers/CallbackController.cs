@@ -21,14 +21,14 @@ namespace LoanBook.LoanManagementSystem.Controllers
         // GET: Callback
         public async Task<ActionResult> Index()
         {
-            await this.GetToken(); 
+            await this.GetToken();
             return View();
         }
 
         private async Task<string> GetToken()
         {
             var client = new OAuth2Client(new Uri("http://localhost:3333/core/connect/token"), "loanbook", "loanbook_secret");
-            
+
             var code = Request.QueryString["code"];
 
             var response = await client.RequestAuthorizationCodeAsync(code, "http://localhost:22177/callback/");
@@ -64,9 +64,9 @@ namespace LoanBook.LoanManagementSystem.Controllers
         {
             var parameters = new TokenValidationParameters
             {
-                AllowedAudience = "loanbook",
+                ValidAudiences = new List<string>{"loanbook"},
                 ValidIssuer = "https://idsrv3.com",
-                SigningToken = new X509SecurityToken(X509.LocalMachine.TrustedPeople.SubjectDistinguishedName.Find("CN=idsrv3test", false).First())
+                IssuerSigningToken = new X509SecurityToken(X509.LocalMachine.TrustedPeople.SubjectDistinguishedName.Find("CN=idsrv3test", false).First())
             };
 
             var id = new JwtSecurityTokenHandler().ValidateToken(token, parameters);

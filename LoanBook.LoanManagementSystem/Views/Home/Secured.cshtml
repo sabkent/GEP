@@ -1,0 +1,13 @@
+﻿@using System.Security.Claims
+
+@{
+    ViewBag.Title = "Secured";
+}
+
+@foreach (var claim in ((ClaimsIdentity)User.Identity).Claims)
+{
+    <div>
+        @claim
+    </div>
+}
+
