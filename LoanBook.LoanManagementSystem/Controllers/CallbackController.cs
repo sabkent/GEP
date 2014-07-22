@@ -27,7 +27,7 @@ namespace LoanBook.LoanManagementSystem.Controllers
 
         private async Task<string> GetToken()
         {
-            var client = new OAuth2Client(new Uri("http://localhost:3333/core/connect/token"), "loanbook", "loanbook_secret");
+            var client = new OAuth2Client(new Uri("http://localhost:3333/core/connect/token"), "codeclient", "secret");
 
             var code = Request.QueryString["code"];
 
@@ -56,7 +56,7 @@ namespace LoanBook.LoanManagementSystem.Controllers
                 }
 
                 var id = new ClaimsIdentity(claims, "Cookies");
-                Request.GetOwinContext().Authentication.SignIn(id);
+                //Request.GetOwinContext().Authentication.SignIn(id);
             }
         }
 
@@ -64,7 +64,7 @@ namespace LoanBook.LoanManagementSystem.Controllers
         {
             var parameters = new TokenValidationParameters
             {
-                ValidAudiences = new List<string>{"loanbook"},
+                ValidAudiences = new List<string> { "codeclient" },
                 ValidIssuer = "https://idsrv3.com",
                 IssuerSigningToken = new X509SecurityToken(X509.LocalMachine.TrustedPeople.SubjectDistinguishedName.Find("CN=idsrv3test", false).First())
             };
@@ -73,18 +73,18 @@ namespace LoanBook.LoanManagementSystem.Controllers
             return id.Claims.ToList();
         }
 
-        private string ParseJwt(string token)
-        {
-            if (!token.Contains("."))
-            {
-                return token;
-            }
+        //private string ParseJwt(string token)
+        //{
+        //    if (!token.Contains("."))
+        //    {
+        //        return token;
+        //    }
 
-            var parts = token.Split('.');
-            var part = Encoding.UTF8.GetString(Thinktecture.IdentityModel.Base64Url.Decode(parts[1]));
+        //    var parts = token.Split('.');
+        //    var part = Encoding.UTF8.GetString(Thinktecture.IdentityModel.Base64Url.Decode(parts[1]));
 
-            var jwt = JObject.Parse(part);
-            return jwt.ToString();
-        }
+        //    var jwt = JObject.Parse(part);
+        //    return jwt.ToString();
+        //}
     }
 }

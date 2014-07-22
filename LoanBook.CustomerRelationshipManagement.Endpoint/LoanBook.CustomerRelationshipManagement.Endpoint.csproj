@@ -48,21 +48,6 @@
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus">
-      <HintPath>..\packages\NServiceBus.Interfaces.4.6.1\lib\net40\NServiceBus.dll</HintPath>
-    </Reference>
-    <Reference Include="NServiceBus.Core, Version=4.5.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NServiceBus.4.6.1\lib\net40\NServiceBus.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="NServiceBus.Host, Version=4.6.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NServiceBus.Host.4.6.1\lib\net40\NServiceBus.Host.exe</HintPath>
-    </Reference>
-    <Reference Include="NServiceBus.ObjectBuilder.Autofac, Version=4.6.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NServiceBus.Autofac.4.6.1\lib\net40\NServiceBus.ObjectBuilder.Autofac.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -72,11 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandHandlers\CheckDuplicationHandler.cs" />
     <Compile Include="CustomerRelationshipManagementModule.cs" />
-    <Compile Include="EndpointConfig.cs" />
-    <Compile Include="EventHandlers\CreateCustomerForAcceptedApplication.cs" />
-    <Compile Include="MessageConventions.cs" />
+    <Compile Include="EventHandlers\RecordActivityForCashPaymentRegistered.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +78,22 @@
     <ProjectReference Include="..\LoanBook.CustomerRelationshipManagement.Messaging\LoanBook.CustomerRelationshipManagement.Messaging.csproj">
       <Project>{E285FCE1-37DD-45F2-9207-30FB86ACA144}</Project>
       <Name>LoanBook.CustomerRelationshipManagement.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoanBook.Endpoint\LoanBook.Endpoint.csproj">
+      <Project>{c5290dbc-2b27-4c8d-8464-e92f35d3a1a6}</Project>
+      <Name>LoanBook.Endpoint</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoanBook.Financial.Messaging\LoanBook.Financial.Messaging.csproj">
+      <Project>{ddb1240e-a8a9-4eb6-9c61-cb8c35bf6231}</Project>
+      <Name>LoanBook.Financial.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoanBook.Infrastructure\LoanBook.Infrastructure.csproj">
+      <Project>{9e0920b4-4a80-4fb0-8b01-93cc9a47aeff}</Project>
+      <Name>LoanBook.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoanBook.Messaging\LoanBook.Messaging.csproj">
+      <Project>{2519fd5a-45db-4ebe-a644-81d48666a148}</Project>
+      <Name>LoanBook.Messaging</Name>
     </ProjectReference>
     <ProjectReference Include="..\LoanBook.Origination.Messaging\LoanBook.Origination.Messaging.csproj">
       <Project>{704d1d4c-f43f-4f16-9f51-4e6be138d36d}</Project>
@@ -122,6 +121,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CommandHandlers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

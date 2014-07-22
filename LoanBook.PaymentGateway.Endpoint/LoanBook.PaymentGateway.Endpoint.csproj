@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandHandlers\TakePaymentCommandHandler.cs" />
-    <Compile Include="CommandSimulator.cs" />
     <Compile Include="EndpointConfig.cs" />
     <Compile Include="MessagingConventions.cs" />
     <Compile Include="PaymentScheduleMocker.cs" />

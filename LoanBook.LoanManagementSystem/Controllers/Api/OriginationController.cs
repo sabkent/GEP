@@ -20,7 +20,7 @@ namespace LoanBook.LoanManagementSystem.Controllers.Api
         {
             var response = Request.CreateResponse(HttpStatusCode.OK);
 
-            MvcApplication.Bus.Send(new SubmitApplication{ApplicationId = origination.Id});
+            
 
             return response;
         }

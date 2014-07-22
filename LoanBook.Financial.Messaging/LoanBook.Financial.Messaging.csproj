@@ -39,9 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\RegisterCashPayment.cs" />
     <Compile Include="Events\AccountInArrears.cs" />
     <Compile Include="Events\AccountSettled.cs" />
+    <Compile Include="Events\CashPaymentRegistered.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LoanBook.Messaging\LoanBook.Messaging.csproj">
+      <Project>{2519fd5a-45db-4ebe-a644-81d48666a148}</Project>
+      <Name>LoanBook.Messaging</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

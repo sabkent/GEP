@@ -57,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandHandlers\CheckEmailHandler.cs" />
-    <Compile Include="CommandSimulator.cs" />
     <Compile Include="EndpointConfig.cs" />
     <Compile Include="MessageConventions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
