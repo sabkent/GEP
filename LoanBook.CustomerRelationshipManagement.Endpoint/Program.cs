@@ -15,6 +15,7 @@ namespace LoanBook.CustomerRelationshipManagement.Endpoint
             
             containerBuilder.RegisterModule<EndpointModule>();
             containerBuilder.RegisterModule<InfrastructureModule>();
+            containerBuilder.RegisterModule<CustomerRelationshipManagementModule>();
 
             var container = containerBuilder.Build();
 

@@ -1,0 +1,4 @@
+C:\Development\GEP\LoanBook.Core\bin\Debug\LoanBook.Core.dll
+C:\Development\GEP\LoanBook.Core\bin\Debug\LoanBook.Core.pdb
+C:\Development\GEP\LoanBook.Core\obj\Debug\LoanBook.Core.dll
+C:\Development\GEP\LoanBook.Core\obj\Debug\LoanBook.Core.pdb

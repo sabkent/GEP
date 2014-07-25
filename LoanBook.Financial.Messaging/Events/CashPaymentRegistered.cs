@@ -6,7 +6,7 @@ namespace LoanBook.Financial.Messaging.Events
     {
         public string Topic
         {
-            get { return TopicNames.Financials; }
+            get { return TopicNames.FinancialsEvents; }
         }
     }
 }

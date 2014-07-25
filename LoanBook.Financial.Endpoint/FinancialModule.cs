@@ -16,10 +16,15 @@ namespace LoanBook.Financial.Endpoint
             
             builder.RegisterType<AccountRepository>().As<IAccountRepository>();
             builder.RegisterType<PaymentRepository>().As<IPaymentRepository>();
+            builder.RegisterType<DigiaFinancialServicesProvider>().As<IFinancialServicesProvider>();
 
             builder.RegisterAssemblyTypes(assembly)
                 .Where(t => t.IsAssiableFromGenericType(typeof (IHandleCommand<>)))
                 .AsClosedTypesOf(typeof (IHandleCommand<>));
+
+            builder.RegisterAssemblyTypes(assembly)
+                .Where(t => t.IsAssiableFromGenericType(typeof(ISubscribeToEvent<>)))
+                .AsClosedTypesOf(typeof(ISubscribeToEvent<>));
         }
     }
 }

@@ -41,8 +41,10 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="Debtor.cs" />
+    <Compile Include="Dto\DirectLoanPaymentRequest.cs" />
     <Compile Include="Entry.cs" />
     <Compile Include="IAccountRepository.cs" />
+    <Compile Include="IFinancialServicesProvider.cs" />
     <Compile Include="IPaymentRepository.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

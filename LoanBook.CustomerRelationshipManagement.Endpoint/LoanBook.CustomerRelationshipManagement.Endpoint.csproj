@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{10CBF3F6-447A-4FBC-8BF2-D359A61C9A8A}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LoanBook.CustomerRelationshipManagement.Endpoint</RootNamespace>
     <AssemblyName>LoanBook.CustomerRelationshipManagement.Endpoint</AssemblyName>
@@ -44,6 +44,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
@@ -57,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandlers\RecordActivityHandler.cs" />
     <Compile Include="CustomerRelationshipManagementModule.cs" />
     <Compile Include="EventHandlers\RecordActivityForCashPaymentRegistered.cs" />
     <Compile Include="Program.cs" />
@@ -67,6 +71,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LoanBook.Core\LoanBook.Core.csproj">
+      <Project>{ecc63463-0ae4-4816-b28f-e6d271a1f2ee}</Project>
+      <Name>LoanBook.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LoanBook.CustomerRelationshipManagement.Core\LoanBook.CustomerRelationshipManagement.Core.csproj">
       <Project>{9bc8caef-4581-46a1-af38-92b4962bb1dc}</Project>
       <Name>LoanBook.CustomerRelationshipManagement.Core</Name>
@@ -122,9 +130,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CommandHandlers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LoanBook.Messaging;
+﻿using LoanBook.Messaging;
 using Neuron.Esb;
+using System.Configuration;
 
 namespace LoanBook.Infrastructure
 {
@@ -22,8 +17,7 @@ namespace LoanBook.Infrastructure
 
         public void Send<T>(T command) where T : ICommand
         {
-            var topic = "Financials";
-            var message = new ESBMessage(topic, command);
+            var message = new ESBMessage(command.Topic, command);
             message.Header.BodyType = typeof (T).AssemblyQualifiedName;
             _party.SendMessage(message);
         }

@@ -1,0 +1,12 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ClassLibrary1
+{
+    class ApplyForLoan
+    {
+        public decimal Amount { get; set; }
+    }
+}
