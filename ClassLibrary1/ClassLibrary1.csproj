@@ -73,6 +73,8 @@
     <Compile Include="Data\EntityFrameworkRepository.cs" />
     <Compile Include="Data\MyDbContext.cs" />
     <Compile Include="DateTimeProvider.cs" />
+    <Compile Include="EventSourced\EventSourcedTests.cs" />
+    <Compile Include="EventSourced\Loan.cs" />
     <Compile Include="Installment.cs" />
     <Compile Include="LoanAgreement.cs" />
     <Compile Include="LoanAgreementRepository.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="Pipline\StepOne.cs" />
     <Compile Include="Pipline\StepTwo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorldPay.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

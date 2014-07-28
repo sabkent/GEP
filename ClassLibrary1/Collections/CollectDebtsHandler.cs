@@ -19,6 +19,8 @@ namespace ClassLibrary1.Collections
 
             debts.AsParallel().ForAll(async debt =>
             {
+                //insert collection initiated record with unique constraint on debt id and attempt number.
+
 
                 var takePaymentResult = await _paymentGatewayProvider.TakePayment(MapToTakePaymentRequest(debt));
                 if (takePaymentResult.IsSuccess)
