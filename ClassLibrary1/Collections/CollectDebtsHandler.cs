@@ -1,39 +1,53 @@
-﻿using System.Linq;
+﻿using System;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
+using ClassLibrary1.Collections.Entity;
 
 namespace ClassLibrary1.Collections
 {
     class CollectDebtsHandler
     {
+        private readonly CollectionsContext _collectionsContext;
+        private readonly ICollectDebtRetryStrategy _collectDebtRetryStrategy;
         private readonly IPaymentGatewayProvider _paymentGatewayProvider;
 
-        public CollectDebtsHandler(IPaymentGatewayProvider paymentGatewayProvider)
+        public CollectDebtsHandler(CollectionsContext collectionsContext, ICollectDebtRetryStrategy collectDebtRetryStrategy, IPaymentGatewayProvider paymentGatewayProvider)
         {
+            _collectionsContext = collectionsContext;
+            _collectDebtRetryStrategy = collectDebtRetryStrategy;
             _paymentGatewayProvider = paymentGatewayProvider;
         }
 
         public async void Handle(CollectDebts collectDebts)
         {
-            var context = new CollectionsContext();
+            var debts = _collectionsContext.Debts.Where(debt => debt.Attempt == collectDebts.Attempt).ToList();
 
-            var debts = context.Debts.Where(debt => debt.Attempt == collectDebts.Attempt).ToList();
-
-            debts.AsParallel().ForAll(async debt =>
+            debts.ForEach(debt =>
             {
-                //insert collection initiated record with unique constraint on debt id and attempt number.
-
-
-                var takePaymentResult = await _paymentGatewayProvider.TakePayment(MapToTakePaymentRequest(debt));
-                if (takePaymentResult.IsSuccess)
+                var collectionAttempt = new CollectionAttempt {DebtId = debt.Id, Attempt = debt.Attempt};
+                _collectionsContext.CollectionAttempts.Add(collectionAttempt);
+                try
                 {
-                    //publish event
+                    _collectionsContext.SaveChanges();
+                    var takePaymentResult = _paymentGatewayProvider.TakePayment(MapToTakePaymentRequest(debt)).Result;
+                    if (takePaymentResult.IsSuccess)
+                    {
+                        collectionAttempt.Reference = takePaymentResult.Reference;
+                        _collectionsContext.SaveChanges();
+                        //publish event
+                    }
+                    else
+                    {
+                        var nextAttempt = _collectDebtRetryStrategy.GetNextAttemptFor(debt);
+
+                        _collectionsContext.Debts.Add(nextAttempt);
+                        _collectionsContext.SaveChanges();
+                    }
                 }
-                else
+                catch (DbUpdateException dbEx)
                 {
-                    var nextAttempt = new Debt(); //some strategy about when next attempt should occur
-
+                    
                 }
-
-                //unitOfWork.Commit();
             });
         }
 

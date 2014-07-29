@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
 using LoanBook.Collections.Core.Data;
 using LoanBook.Collections.Core.Query;
 using LoanBook.Collections.Infrastructure.Data;
@@ -17,6 +12,8 @@ namespace LoanBook.Collections.Endpoint
         {
             builder.RegisterType<PaymentQueries>().As<IQueryPayments>();
             builder.RegisterType<PaymentRepository>().As<IPaymentRepository>();
+
+            builder.RegisterType<CollectionsContext>().SingleInstance();
         }
     }
 }

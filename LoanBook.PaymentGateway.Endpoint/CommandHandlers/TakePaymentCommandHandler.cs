@@ -3,27 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LoanBook.Messaging;
 
 namespace LoanBook.PaymentGateway.Endpoint.CommandHandlers
 {
     using LoanBook.PaymentGateway.Messaging.Commands;
     using LoanBook.PaymentGateway.Messaging.Events;
-
-    using NServiceBus;
-
-    class TakePaymentCommandHandler : IHandleMessages<TakePayment>
+    
+    class TakePaymentCommandHandler : IHandleCommand<TakePayment>
     {
-        private readonly IBus bus;
+        private readonly IPublishEvents _eventPublisher;
 
-        public TakePaymentCommandHandler(IBus bus)
+        public TakePaymentCommandHandler(IPublishEvents eventPublisher)
         {
-            this.bus = bus;
+            _eventPublisher = eventPublisher;
         }
 
         public void Handle(TakePayment message)
         {
             Console.WriteLine("Take payment handler invoked");
-            this.bus.Publish(new PaymentTaken());
+            _eventPublisher.Publish(new PaymentTaken());
         }
     }
 }

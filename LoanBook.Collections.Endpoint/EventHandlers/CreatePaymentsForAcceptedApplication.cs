@@ -1,12 +1,12 @@
 ﻿using System;
 using LoanBook.Collections.Core.Data;
+using LoanBook.Messaging;
 using LoanBook.Origination.Messaging.Events;
-using NServiceBus;
 using LoanBook.Collections.Core;
 
 namespace LoanBook.Collections.Endpoint.EventHandlers
 {
-    internal sealed class CreatePaymentsForAcceptedApplication : IHandleMessages<ApplicationAccepted>
+    internal sealed class CreatePaymentsForAcceptedApplication : ISubscribeToEvent<ApplicationAccepted>
     {
         private readonly IPaymentRepository _paymentRepository;
 
@@ -19,6 +19,11 @@ namespace LoanBook.Collections.Endpoint.EventHandlers
         {
             var payment = new Payment {Id = Guid.NewGuid(), Amount = 100, DueDate = DateTime.Now.Date};
             _paymentRepository.Add(payment);
+        }
+
+        public void Notify(ApplicationAccepted @event)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -4,39 +4,55 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LoanBook.Collections.Core.Data;
+using LoanBook.Collections.Core.Entities;
 using LoanBook.Collections.Core.Query;
+using LoanBook.Messaging;
 using LoanBook.PaymentGateway.Messaging.Commands;
-using NServiceBus;
+
 using LoanBook.Collections.Messaging.Commands;
 
 namespace LoanBook.Collections.Endpoint.CommandHandlers
 {
-    internal sealed class StartDebtCollectionsHandler : IHandleMessages<StartDebtCollections>
+    internal sealed class StartDebtCollectionsHandler : IHandleCommand<StartDebtCollections>
     {
-        private readonly IBus _bus;
+        private readonly CollectionsContext _collectionsContext;
+        private readonly IDispatchCommands _commandDispatcher;
         private readonly IQueryPayments _queryPayments;
         private readonly IPaymentRepository _paymentRepository;
 
-        public StartDebtCollectionsHandler(IBus bus, IQueryPayments queryPayments, IPaymentRepository paymentRepository)
+        public StartDebtCollectionsHandler(CollectionsContext collectionsContext, IDispatchCommands commandDispatcher, IQueryPayments queryPayments, IPaymentRepository paymentRepository)
         {
-            _bus = bus;
+            _collectionsContext = collectionsContext;
+            _commandDispatcher = commandDispatcher;
             _queryPayments = queryPayments;
             _paymentRepository = paymentRepository;
         }
 
         public void Handle(StartDebtCollections message)
         {
-            Console.WriteLine("starting debt collection...");
+            var debts = _collectionsContext.Debts.ToList();
 
-            var duePayments = _queryPayments.GetPaymentDueFor(DateTime.Now.Date).ToList();
-
-            Console.WriteLine("found {0} payments due today", duePayments.Count);
-
-            foreach (var duePayment in duePayments)
+            debts.ForEach(debt =>
             {
-                //load payment and ask it if it can be collected
-                _bus.Send(new TakePayment());
-            }
+                var collection = new Collection {DebtId = debt.Id};
+                _collectionsContext.Collections.Add(collection);
+
+                _collectionsContext.SaveChanges();
+
+                var takePayment = new TakePayment {AccountId = debt.DebtorId, Amount = debt.Amount};
+                _commandDispatcher.Send(takePayment);
+            });
+
+            //var collection = new Collection{DebtId = de}
+
+
+            //var duePayments = _queryPayments.GetPaymentDueFor(DateTime.Now.Date).ToList();
+
+            //foreach (var duePayment in duePayments)
+            //{
+            //    //load payment and ask it if it can be collected
+            //    _commandDispatcher.Send(new TakePayment());
+            //}
 
         }
     }

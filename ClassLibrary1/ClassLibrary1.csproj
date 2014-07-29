@@ -64,6 +64,7 @@
     <Compile Include="Collections\Debt.cs" />
     <Compile Include="Collections\DebtQueries.cs" />
     <Compile Include="Collections\Entity\CollectionAttempt.cs" />
+    <Compile Include="Collections\ICollectDebtRetryStrategy.cs" />
     <Compile Include="Collections\ICollectionAttemptRepository.cs" />
     <Compile Include="Collections\ICollectionRepository.cs" />
     <Compile Include="Collections\IDebtRepository.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="EventSourced\EventSourcedTests.cs" />
     <Compile Include="EventSourced\Loan.cs" />
     <Compile Include="Installment.cs" />
+    <Compile Include="Messaging.cs" />
     <Compile Include="LoanAgreement.cs" />
     <Compile Include="LoanAgreementRepository.cs" />
     <Compile Include="LoanAgreementTests.cs" />

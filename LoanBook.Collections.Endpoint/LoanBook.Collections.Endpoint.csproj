@@ -5,12 +5,13 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5FF27C78-7170-4FC1-A51C-365D120109E2}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LoanBook.Collections.Endpoint</RootNamespace>
     <AssemblyName>LoanBook.Collections.Endpoint</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -44,26 +44,22 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus">
-      <HintPath>..\packages\NServiceBus.Interfaces.4.6.1\lib\net40\NServiceBus.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus.Core, Version=4.5.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NServiceBus.4.6.1\lib\net40\NServiceBus.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="NServiceBus.Host, Version=4.6.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NServiceBus.Host.4.6.1\lib\net40\NServiceBus.Host.exe</HintPath>
-    </Reference>
-    <Reference Include="NServiceBus.ObjectBuilder.Autofac, Version=4.6.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NServiceBus.Autofac.4.6.1\lib\net40\NServiceBus.ObjectBuilder.Autofac.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -72,13 +68,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CollectionsContext.cs" />
     <Compile Include="CollectionsModule.cs" />
-    <Compile Include="CommandHandlers\SchedulePaymentPlanCommandHandler.cs" />
     <Compile Include="CommandHandlers\StartDebtCollectionsHandler.cs" />
-    <Compile Include="EndpointConfig.cs" />
     <Compile Include="EventHandlers\CreatePaymentsForAcceptedApplication.cs" />
-    <Compile Include="MessageConventions.cs" />
     <Compile Include="EventHandlers\PaymentTakenHandler.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +95,18 @@
       <Project>{7f504c8c-c51c-4c62-b70a-c18db0753259}</Project>
       <Name>LoanBook.Collections.Messaging</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LoanBook.Endpoint\LoanBook.Endpoint.csproj">
+      <Project>{c5290dbc-2b27-4c8d-8464-e92f35d3a1a6}</Project>
+      <Name>LoanBook.Endpoint</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoanBook.Infrastructure\LoanBook.Infrastructure.csproj">
+      <Project>{9e0920b4-4a80-4fb0-8b01-93cc9a47aeff}</Project>
+      <Name>LoanBook.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoanBook.Messaging\LoanBook.Messaging.csproj">
+      <Project>{2519fd5a-45db-4ebe-a644-81d48666a148}</Project>
+      <Name>LoanBook.Messaging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LoanBook.Origination.Messaging\LoanBook.Origination.Messaging.csproj">
       <Project>{704d1d4c-f43f-4f16-9f51-4e6be138d36d}</Project>
       <Name>LoanBook.Origination.Messaging</Name>
@@ -108,11 +115,6 @@
       <Project>{fb04f4c3-9265-4f5c-88c2-bf8afd0e97b3}</Project>
       <Name>LoanBook.PaymentGateway.Messaging</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="LoanBook.Collections.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">

@@ -1,12 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LoanBook.Messaging;
 
 namespace LoanBook.PaymentGateway.Messaging.Commands
 {
-    public class TakePayment
+    public class TakePayment : ICommand
     {
+        public string Topic
+        {
+            get { return TopicNames.PaymentGatewayCommands; }
+        }
+
+        public decimal Amount { get; set; }
+        public Guid AccountId { get; set; }
     }
 }

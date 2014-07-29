@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\IPaymentRepository.cs" />
+    <Compile Include="Entities\Collection.cs" />
+    <Compile Include="Entities\Debt.cs" />
     <Compile Include="Entities\Payment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\IQueryPayments.cs" />
