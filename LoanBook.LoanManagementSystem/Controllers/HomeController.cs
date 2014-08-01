@@ -1,4 +1,5 @@
-﻿using LoanBook.Financial.Messaging.Commands;
+﻿using LoanBook.Collections.Messaging.Commands;
+using LoanBook.Financial.Messaging.Commands;
 using LoanBook.Messaging;
 
 namespace LoanBook.LoanManagementSystem.Controllers
@@ -43,7 +44,7 @@ namespace LoanBook.LoanManagementSystem.Controllers
 
         public void CollectDebt()
         {
-         
+            _dispatchCommands.Send(new StartDebtCollections());
         }
 
         public void SignLoan(Guid applicationId)

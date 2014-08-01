@@ -1,9 +1,4 @@
 ﻿using Autofac;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LoanBook.Messaging;
 
 namespace LoanBook.Infrastructure
@@ -15,6 +10,7 @@ namespace LoanBook.Infrastructure
             builder.RegisterType<MongoDbDocumentStore>().As<IDocumentStore>();
             builder.RegisterType<NeuronCommandDispatcher>().As<IDispatchCommands>();
             builder.RegisterType<NeuronEventPublisher>().As<IPublishEvents>();
+            builder.RegisterType<MessageDispatcher>().As<IMessageDispatcher>();
         }
     }
 }

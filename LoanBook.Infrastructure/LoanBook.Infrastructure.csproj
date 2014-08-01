@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="IDocumentStore.cs" />
     <Compile Include="InfrastructureModule.cs" />
+    <Compile Include="NeuronMessageDispatcher.cs" />
     <Compile Include="MongoDbDocumentStore.cs" />
     <Compile Include="NeuronCommandDispatcher.cs" />
     <Compile Include="NeuronEventPublisher.cs" />

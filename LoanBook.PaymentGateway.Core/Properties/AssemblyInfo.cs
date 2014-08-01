@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LoanBook.Endpoint")]
+[assembly: AssemblyTitle("LoanBook.PaymentGateway.Core")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LoanBook.Endpoint")]
+[assembly: AssemblyProduct("LoanBook.PaymentGateway.Core")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("90e75065-1f64-4ff2-8b21-ba7a611e1cb7")]
+[assembly: Guid("d42b7227-1fcf-4cf4-b43d-2190d6f48913")]
 
 // Version information for an assembly consists of the following four values:
 //

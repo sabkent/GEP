@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C5290DBC-2B27-4C8D-8464-E92F35D3A1A6}</ProjectGuid>
+    <ProjectGuid>{2237CA54-DBCC-4728-8CBE-6448E5C77F7B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LoanBook.Endpoint</RootNamespace>
-    <AssemblyName>LoanBook.Endpoint</AssemblyName>
+    <RootNamespace>LoanBook.PaymentGateway.Infrastructure</RootNamespace>
+    <AssemblyName>LoanBook.PaymentGateway.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,37 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ServiceBus, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WindowsAzure.ServiceBus.2.2.2.0\lib\net40-full\Microsoft.ServiceBus.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Neuron.Esb">
-      <HintPath>..\packages\NeuronEsb.ClientApi.3.1.175\lib\net40\Neuron.Esb.dll</HintPath>
-    </Reference>
-    <Reference Include="Neuron.Pipelines">
-      <HintPath>..\packages\NeuronEsb.ClientApi.3.1.175\lib\net40\Neuron.Pipelines.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="RabbitMQ.Client">
-      <HintPath>..\packages\RabbitMQ.Client.3.2.1\lib\net30\RabbitMQ.Client.dll</HintPath>
+    <Reference Include="PayPalCoreSDK">
+      <HintPath>..\packages\PayPalCoreSDK.1.4.2\lib\net45\PayPalCoreSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="RestApiSDK">
+      <HintPath>..\packages\RestApiSDK.0.7.6\lib\net45\RestApiSDK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,19 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EndpointModule.cs" />
-    <Compile Include="MessageDispatcher.cs" />
+    <Compile Include="PaymentGateways\Paypal\PaypalPaymentGateway.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LoanBook.Messaging\LoanBook.Messaging.csproj">
-      <Project>{2519fd5a-45db-4ebe-a644-81d48666a148}</Project>
-      <Name>LoanBook.Messaging</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
+    <ProjectReference Include="..\LoanBook.PaymentGateway.Core\LoanBook.PaymentGateway.Core.csproj">
+      <Project>{82517543-9a83-4295-bf3e-2ed452fb3db7}</Project>
+      <Name>LoanBook.PaymentGateway.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

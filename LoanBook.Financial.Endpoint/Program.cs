@@ -1,7 +1,7 @@
 ﻿using System;
 using Autofac;
-using LoanBook.Endpoint;
 using LoanBook.Infrastructure;
+using LoanBook.Messaging;
 
 namespace LoanBook.Financial.Endpoint
 {
@@ -13,7 +13,6 @@ namespace LoanBook.Financial.Endpoint
         {
             var containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterModule<FinancialModule>();
-            containerBuilder.RegisterModule<EndpointModule>();
             containerBuilder.RegisterModule<InfrastructureModule>();
 
             var container = containerBuilder.Build();

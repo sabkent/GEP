@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LoanBook.Collections.Core.Data;
+﻿using LoanBook.Collections.Core.Data;
 using LoanBook.Collections.Core.Entities;
 using LoanBook.Collections.Core.Query;
+using LoanBook.Collections.Messaging.Commands;
 using LoanBook.Messaging;
 using LoanBook.PaymentGateway.Messaging.Commands;
-
-using LoanBook.Collections.Messaging.Commands;
+using System.Linq;
 
 namespace LoanBook.Collections.Endpoint.CommandHandlers
 {
@@ -32,28 +27,18 @@ namespace LoanBook.Collections.Endpoint.CommandHandlers
         {
             var debts = _collectionsContext.Debts.ToList();
 
-            debts.ForEach(debt =>
-            {
-                var collection = new Collection {DebtId = debt.Id};
-                _collectionsContext.Collections.Add(collection);
+            debts.ForEach(ProcessDebt);
+        }
 
-                _collectionsContext.SaveChanges();
+        private void ProcessDebt(Debt debt)
+        {
+            var collection = new Collection { DebtId = debt.Id };
+            _collectionsContext.Collections.Add(collection);
 
-                var takePayment = new TakePayment {AccountId = debt.DebtorId, Amount = debt.Amount};
-                _commandDispatcher.Send(takePayment);
-            });
+            _collectionsContext.SaveChanges();
 
-            //var collection = new Collection{DebtId = de}
-
-
-            //var duePayments = _queryPayments.GetPaymentDueFor(DateTime.Now.Date).ToList();
-
-            //foreach (var duePayment in duePayments)
-            //{
-            //    //load payment and ask it if it can be collected
-            //    _commandDispatcher.Send(new TakePayment());
-            //}
-
+            var takePayment = new TakePayment{CardHolderId = debt.DebtorId, Amount = debt.Amount, CorrelationId = debt.Id};
+            _commandDispatcher.Send(takePayment);
         }
     }
 }

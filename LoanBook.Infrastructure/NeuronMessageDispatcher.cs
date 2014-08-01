@@ -1,24 +1,22 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Configuration;
+using System.Reflection;
 using Autofac;
 using LoanBook.Messaging;
-using Neuron.Esb;
 using System;
-using System.Configuration;
-using System.Reflection;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Neuron.Esb;
 
-namespace LoanBook.Endpoint
+namespace LoanBook.Infrastructure
 {
-    public interface IMessageDispatcher
-    {
-        void Listen();
-    }
-    public class MessageDispatcher : IMessageDispatcher
+    public class NeuronMessageDispatcher : IMessageDispatcher
     {
         private readonly IComponentContext _componentContext;
         private Party _party;
 
-        public MessageDispatcher(IComponentContext componentContext)
+        public NeuronMessageDispatcher(IComponentContext componentContext)
         {
             _componentContext = componentContext;
             var partyName = ConfigurationManager.AppSettings["neuron:dispatcher:party"];
@@ -37,21 +35,21 @@ namespace LoanBook.Endpoint
             var messageType = Type.GetType(bodyType);
 
             MethodInfo dispatchMethod = null;
-            if (typeof (ICommand).IsAssignableFrom(messageType))
+            if (typeof(ICommand).IsAssignableFrom(messageType))
             {
                 dispatchMethod = this.GetType()
                         .GetMethod("DispatchCommand", BindingFlags.Instance | BindingFlags.NonPublic)
                         .MakeGenericMethod(messageType);
             }
 
-            if (typeof (IEvent).IsAssignableFrom(messageType))
+            if (typeof(IEvent).IsAssignableFrom(messageType))
             {
                 dispatchMethod = this.GetType()
                         .GetMethod("DispatchEvent", BindingFlags.Instance | BindingFlags.NonPublic)
                         .MakeGenericMethod(messageType);
             }
 
-            if(dispatchMethod != null)
+            if (dispatchMethod != null)
                 dispatchMethod.Invoke(this, new object[] { e.Message });
         }
 

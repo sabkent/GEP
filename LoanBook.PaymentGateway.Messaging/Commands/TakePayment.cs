@@ -11,6 +11,7 @@ namespace LoanBook.PaymentGateway.Messaging.Commands
         }
 
         public decimal Amount { get; set; }
-        public Guid AccountId { get; set; }
+        public Guid CardHolderId { get; set; }
+        public Guid CorrelationId { get; set; }
     }
 }

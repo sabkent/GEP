@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LoanBook.Messaging;
 
 namespace LoanBook.PaymentGateway.Messaging.Events
 {
     public class PaymentTaken : IEvent
     {
-        public Guid Reference { get; set; }
+        public Guid CorrelationId { get; set; }
+        public string ProviderReference { get; set; }
+        public bool Succeeded { get; set; }
 
         public string Topic
         {

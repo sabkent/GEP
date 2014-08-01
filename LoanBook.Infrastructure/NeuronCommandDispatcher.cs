@@ -15,7 +15,7 @@ namespace LoanBook.Infrastructure
             _party.Connect();
         }
 
-        public void Send<T>(T command) where T : ICommand
+        public void Send<T>(T command) where T : class, ICommand
         {
             var message = new ESBMessage(command.Topic, command);
             message.Header.BodyType = typeof (T).AssemblyQualifiedName;

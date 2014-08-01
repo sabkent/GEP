@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{832BE62E-8BB3-4FFC-948B-8A5A93F7697D}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LoanBook.PaymentGateway.Endpoint</RootNamespace>
     <AssemblyName>LoanBook.PaymentGateway.Endpoint</AssemblyName>
@@ -29,12 +29,22 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandHandlers\TakePaymentCommandHandler.cs" />
+    <Compile Include="PaymentGatewayContext.cs" />
+    <Compile Include="PaymentGatewayModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -52,10 +64,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LoanBook.Endpoint\LoanBook.Endpoint.csproj">
-      <Project>{c5290dbc-2b27-4c8d-8464-e92f35d3a1a6}</Project>
-      <Name>LoanBook.Endpoint</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LoanBook.Infrastructure\LoanBook.Infrastructure.csproj">
       <Project>{9e0920b4-4a80-4fb0-8b01-93cc9a47aeff}</Project>
       <Name>LoanBook.Infrastructure</Name>
@@ -63,6 +71,14 @@
     <ProjectReference Include="..\LoanBook.Messaging\LoanBook.Messaging.csproj">
       <Project>{2519fd5a-45db-4ebe-a644-81d48666a148}</Project>
       <Name>LoanBook.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoanBook.PaymentGateway.Core\LoanBook.PaymentGateway.Core.csproj">
+      <Project>{82517543-9a83-4295-bf3e-2ed452fb3db7}</Project>
+      <Name>LoanBook.PaymentGateway.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoanBook.PaymentGateway.Infrastructure\LoanBook.PaymentGateway.Infrastructure.csproj">
+      <Project>{2237ca54-dbcc-4728-8cbe-6448e5c77f7b}</Project>
+      <Name>LoanBook.PaymentGateway.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\LoanBook.PaymentGateway.Messaging\LoanBook.PaymentGateway.Messaging.csproj">
       <Project>{fb04f4c3-9265-4f5c-88c2-bf8afd0e97b3}</Project>

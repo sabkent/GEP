@@ -1,7 +1,3 @@
-
-using System.Collections.Generic;
-using LoanBook.Endpoint;
-
 namespace LoanBook.Origination.Endpoint
 {
     using System;

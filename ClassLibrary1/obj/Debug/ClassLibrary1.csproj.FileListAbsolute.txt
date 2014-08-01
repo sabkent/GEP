@@ -9,6 +9,6 @@ C:\Development\GEP\ClassLibrary1\bin\Debug\EntityFramework.xml
 C:\Development\GEP\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.xml
 C:\Development\GEP\ClassLibrary1\bin\Debug\Moq.xml
 C:\Development\GEP\ClassLibrary1\bin\Debug\nunit.framework.xml
-C:\Development\GEP\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
 C:\Development\GEP\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\Development\GEP\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\Development\GEP\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
