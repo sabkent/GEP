@@ -1,4 +1,5 @@
-﻿using LoanBook.Collections.Messaging.Commands;
+﻿using System.Configuration;
+using LoanBook.Collections.Messaging.Commands;
 using LoanBook.Financial.Messaging.Commands;
 using LoanBook.Messaging;
 
@@ -19,6 +20,10 @@ namespace LoanBook.LoanManagementSystem.Controllers
 
         public ActionResult Index()
         {
+            var url = ConfigurationManager.AppSettings["paymentServiceUrl"];
+
+            ViewBag.IFrameUrl = String.Format("{0}/cardentry", url);
+
             return View();
         }
 

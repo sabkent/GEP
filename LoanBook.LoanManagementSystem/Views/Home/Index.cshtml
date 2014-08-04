@@ -9,7 +9,6 @@
             <input id="guid" type="text" value="@Guid.NewGuid().ToString()" />
             <input id="submitApplication" type="button" value="Submit application"/>
             <input id="signLoan" type="button" value="sign loan" />
-            
         </p>
     </div>
     <div class="col-md-4">
@@ -24,6 +23,12 @@
         }
         <a href="/home/secured">secured</a>
     </div>
+</div>
+
+<div>
+    <input type="button" id="changeCardFrame" value="change card frame" />
+    <iframe id="cardFrame" src="@ViewBag.IFrameUrl"></iframe>
+    
 </div>
 
 <script src="~/Scripts/jquery-2.1.1.min.js"></script>
@@ -44,6 +49,11 @@
         });
         $('#sendRegisterCashPaymentCommand').on('click', function() {
             $.ajax({ url: '/home/sendRegisterCashPaymentCommand' });
+        });
+
+        $('#changeCardFrame').on('click', function () {
+            var frame = document.getElementById('cardFrame');
+            frame.src = frame.src + "#submit";
         });
     });
 </script>

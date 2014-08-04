@@ -10,7 +10,7 @@ namespace LoanBook.Infrastructure
             builder.RegisterType<MongoDbDocumentStore>().As<IDocumentStore>();
             builder.RegisterType<NeuronCommandDispatcher>().As<IDispatchCommands>();
             builder.RegisterType<NeuronEventPublisher>().As<IPublishEvents>();
-            builder.RegisterType<MessageDispatcher>().As<IMessageDispatcher>();
+            builder.RegisterType<NeuronMessageDispatcher>().As<IMessageDispatcher>();
         }
     }
 }
