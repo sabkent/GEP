@@ -8,5 +8,7 @@
         public static string CollectionsCommands = "Collections.Commands";
         public static string PaymentGatewayCommands = "Payment Gateway.Commands";
         public static string PaymentGatewayEvents = "Payment Gateway.Events";
+        public static string OriginationCommands = "Origination.Commands";
+        public static string OriginationEvents = "Origination.Events";
     }
 }

@@ -51,23 +51,14 @@
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus, Version=4.5.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NServiceBus.Interfaces.4.6.1\lib\net40\NServiceBus.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus.Core, Version=4.5.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NServiceBus.4.6.1\lib\net40\NServiceBus.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="NServiceBus.Host, Version=4.6.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NServiceBus.Host.4.6.1\lib\net40\NServiceBus.Host.exe</HintPath>
-    </Reference>
-    <Reference Include="NServiceBus.ObjectBuilder.Autofac, Version=4.6.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NServiceBus.Autofac.4.6.1\lib\net40\NServiceBus.ObjectBuilder.Autofac.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -76,9 +67,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandlers\CreditCheckApplication.cs" />
+    <Compile Include="CommandHandlers\SubmitApplicationHandler.cs" />
+    <Compile Include="EventHandlers\ApplicationSubmittedHandler.cs" />
+    <Compile Include="OriginationContext.cs" />
     <Compile Include="OriginationModule.cs" />
-    <Compile Include="ProcessManagers\ApplicationWorkflow.cs" />
-    <Compile Include="ProcessManagers\LoanApplicationProcessManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -116,6 +109,10 @@
       <Project>{9e0920b4-4a80-4fb0-8b01-93cc9a47aeff}</Project>
       <Name>LoanBook.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LoanBook.Messaging\LoanBook.Messaging.csproj">
+      <Project>{2519fd5a-45db-4ebe-a644-81d48666a148}</Project>
+      <Name>LoanBook.Messaging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LoanBook.Origination.Core\LoanBook.Origination.Core.csproj">
       <Project>{92CBBE46-E410-46A0-97DF-34E5282FDE5C}</Project>
       <Name>LoanBook.Origination.Core</Name>
@@ -129,6 +126,7 @@
       <Name>LoanBook.Origination.Messaging</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

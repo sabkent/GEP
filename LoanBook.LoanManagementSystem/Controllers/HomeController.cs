@@ -22,7 +22,7 @@ namespace LoanBook.LoanManagementSystem.Controllers
         {
             var url = ConfigurationManager.AppSettings["paymentServiceUrl"];
 
-            ViewBag.IFrameUrl = String.Format("{0}/cardentry", url);
+            ViewBag.IFrameUrl = String.Format("{0}/cardentry/savecard/{1}", url, Guid.NewGuid());
 
             return View();
         }

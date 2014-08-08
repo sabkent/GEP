@@ -28,13 +28,29 @@
 <div>
     <input type="button" id="changeCardFrame" value="change card frame" />
     <iframe id="cardFrame" src="@ViewBag.IFrameUrl"></iframe>
-    
 </div>
 
 <script src="~/Scripts/jquery-2.1.1.min.js"></script>
 
 <script>
-    $(function() {
+    function monitorIframe(frame, storedUrl) {
+        setTimeout(function() {
+            var url = frame.attr('src');
+            if (storedUrl != url) {
+                var parts = url.split('#');
+                if (parts.length > 1) {
+                    var fragment = parts[1];
+                    console.log('iframe fragment: ' + fragment);
+                };
+            };
+            monitorIframe(frame, url);
+        }, 1000);
+    }
+
+    $(function () {
+        var cardFrame = $('#cardFrame');
+        monitorIframe(cardFrame, cardFrame.attr('src'));
+
         $('#submitApplication').on('click', function() {
             $.ajax({ url: '/api/origination', type: 'POST', data: { "id": $('#guid').val() } });
         });
@@ -52,8 +68,14 @@
         });
 
         $('#changeCardFrame').on('click', function () {
-            var frame = document.getElementById('cardFrame');
-            frame.src = frame.src + "#submit";
+
+            var frame = $('#cardFrame');
+
+            var src = frame.attr('src');
+            frame.attr('src', src + "#submit");
+
+            //var frame = document.getElementById('cardFrame');
+            //frame.src = frame.src + "#submit";
         });
     });
 </script>

@@ -71,6 +71,7 @@
     <Compile Include="CollectionsContext.cs" />
     <Compile Include="CollectionsModule.cs" />
     <Compile Include="CommandHandlers\StartDebtCollectionsHandler.cs" />
+    <Compile Include="EventHandlers\CreateDebtsForAcceptedApplication.cs" />
     <Compile Include="EventHandlers\PaymentTakenHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

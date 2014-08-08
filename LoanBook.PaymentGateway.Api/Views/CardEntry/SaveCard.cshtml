@@ -1,0 +1,44 @@
+﻿@model LoanBook.PaymentGateway.Api.Models.CardEntry
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+@using (Html.BeginForm("SaveCard", "CardEntry", FormMethod.Post, new { id = "cardForm" }))
+{
+    @Html.HiddenFor(x=>x.ApplicationId)
+    @Html.EditorFor(x=>x.Number)
+}
+<script>
+
+    var commandHandlerRegistry = {
+        submit: function() {
+            var cardForm = document.getElementById("cardForm");
+            cardForm.submit();
+        }
+    };
+
+    if ("onhashchange" in window) { // event supported?
+        window.onhashchange = function() {
+            hashChanged(window.location.hash);
+        };
+    }
+    else { // event not supported:
+        var storedHash = window.location.hash;
+        window.setInterval(function () {
+            if (window.location.hash != storedHash) {
+                storedHash = window.location.hash;
+                hashChanged(storedHash);
+            }
+        }, 100);
+    };
+
+    function hashChanged(hash) {
+        var command = hash.substr(1, hash.length);
+        var commandHandler = commandHandlerRegistry[command];
+
+        if (commandHandler != undefined)
+            commandHandler();
+    };
+
+</script>
