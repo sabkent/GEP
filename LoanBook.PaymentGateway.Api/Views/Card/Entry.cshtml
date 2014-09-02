@@ -1,0 +1,11 @@
+﻿@model LoanBook.PaymentGateway.Api.Models.CardEntry
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x=>x.ApplicationId)
+    <input type="submit" value="card"/>
+}

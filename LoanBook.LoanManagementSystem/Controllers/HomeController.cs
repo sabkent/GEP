@@ -1,6 +1,5 @@
 ﻿using System.Configuration;
 using LoanBook.Collections.Messaging.Commands;
-using LoanBook.Financial.Messaging.Commands;
 using LoanBook.Messaging;
 
 namespace LoanBook.LoanManagementSystem.Controllers
@@ -60,7 +59,7 @@ namespace LoanBook.LoanManagementSystem.Controllers
 
         public void SendRegisterCashPaymentCommand()
         {
-            _dispatchCommands.Send(new RegisterCashPayment());
+            //_dispatchCommands.Send(new RegisterCashPayment());
         }
     }
 }

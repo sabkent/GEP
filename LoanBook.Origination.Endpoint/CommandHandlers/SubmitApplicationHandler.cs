@@ -7,6 +7,7 @@ using LoanBook.Messaging;
 using LoanBook.Origination.Core;
 using LoanBook.Origination.Messaging.Commands;
 using LoanBook.Origination.Messaging.Events;
+using LoanBook.PaymentGateway.Messaging.Events;
 
 namespace LoanBook.Origination.Endpoint.CommandHandlers
 {
@@ -25,12 +26,18 @@ namespace LoanBook.Origination.Endpoint.CommandHandlers
             _eventsPublisher = eventsPublisher;
         }
 
-        public void Handle(SubmitApplication command)
+        public void Handle(SubmitApplication submitapplication)
         {
-            _originationContext.Applications.Add(new Application());
+            var application = new Application {Id = submitapplication.ApplicationId};
+            _originationContext.Applications.Add(application);
             _originationContext.SaveChanges();
 
-            _eventsPublisher.Publish(new ApplicationAccepted());
+            var applicationAccepted = new ApplicationSubmissionAccepted
+            {
+                ApplicationId = submitapplication.ApplicationId
+            };
+
+            _eventsPublisher.Publish(applicationAccepted);
         }
     }
 }

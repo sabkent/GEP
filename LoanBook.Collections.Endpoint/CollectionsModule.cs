@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using LoanBook.Collections.Core;
 using LoanBook.Collections.Core.Data;
 using LoanBook.Collections.Core.Query;
 using LoanBook.Collections.Infrastructure.Data;
@@ -12,6 +13,7 @@ namespace LoanBook.Collections.Endpoint
         {
             builder.RegisterType<PaymentQueries>().As<IQueryPayments>();
             builder.RegisterType<PaymentRepository>().As<IPaymentRepository>();
+            builder.RegisterType<DefaultDebtRescheduler>().As<IRescheduleDebts>();
 
             builder.RegisterType<CollectionsContext>().SingleInstance();
         }

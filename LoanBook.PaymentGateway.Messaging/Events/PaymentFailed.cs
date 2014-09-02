@@ -1,9 +1,15 @@
-﻿namespace LoanBook.PaymentGateway.Messaging.Events
-{
-    using System;
+﻿using System;
+using LoanBook.Messaging;
 
-    public sealed class PaymentFailed
+namespace LoanBook.PaymentGateway.Messaging.Events
+{
+    public sealed class PaymentFailed : IEvent
     {
-        public Guid Id { get; set; }
+        public Guid CorrelationId { get; set; }
+
+        public string Topic
+        {
+            get { return TopicNames.PaymentGatewayEvents; }
+        }
     }
 }

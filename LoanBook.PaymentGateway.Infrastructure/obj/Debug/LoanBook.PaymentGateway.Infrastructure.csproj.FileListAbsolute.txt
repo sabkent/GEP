@@ -1,0 +1,11 @@
+C:\Development\GEP\LoanBook.PaymentGateway.Infrastructure\bin\Debug\LoanBook.PaymentGateway.Infrastructure.dll
+C:\Development\GEP\LoanBook.PaymentGateway.Infrastructure\bin\Debug\LoanBook.PaymentGateway.Infrastructure.pdb
+C:\Development\GEP\LoanBook.PaymentGateway.Infrastructure\bin\Debug\LoanBook.PaymentGateway.Core.dll
+C:\Development\GEP\LoanBook.PaymentGateway.Infrastructure\bin\Debug\Newtonsoft.Json.dll
+C:\Development\GEP\LoanBook.PaymentGateway.Infrastructure\bin\Debug\PayPalCoreSDK.dll
+C:\Development\GEP\LoanBook.PaymentGateway.Infrastructure\bin\Debug\RestApiSDK.dll
+C:\Development\GEP\LoanBook.PaymentGateway.Infrastructure\bin\Debug\LoanBook.PaymentGateway.Core.pdb
+C:\Development\GEP\LoanBook.PaymentGateway.Infrastructure\bin\Debug\Newtonsoft.Json.xml
+C:\Development\GEP\LoanBook.PaymentGateway.Infrastructure\obj\Debug\LoanBook.PaymentGateway.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Development\GEP\LoanBook.PaymentGateway.Infrastructure\obj\Debug\LoanBook.PaymentGateway.Infrastructure.dll
+C:\Development\GEP\LoanBook.PaymentGateway.Infrastructure\obj\Debug\LoanBook.PaymentGateway.Infrastructure.pdb

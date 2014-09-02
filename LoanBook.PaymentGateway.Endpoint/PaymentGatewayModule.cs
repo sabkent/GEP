@@ -8,7 +8,7 @@ namespace LoanBook.PaymentGateway.Endpoint
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<PaypalPaymentGateway>().As<IPaymentGateway>();
+            builder.RegisterType<PaypalPaymentGateway>().As<ITakePaymentProvider>();
             builder.RegisterType<PaymentGatewayContext>();
             base.Load(builder);
         }

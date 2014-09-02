@@ -1,0 +1,5 @@
+C:\Development\GEP\LoanBook.PaymentGateway.Core\bin\Debug\LoanBook.PaymentGateway.Core.dll
+C:\Development\GEP\LoanBook.PaymentGateway.Core\bin\Debug\LoanBook.PaymentGateway.Core.pdb
+C:\Development\GEP\LoanBook.PaymentGateway.Core\obj\Debug\LoanBook.PaymentGateway.Core.csprojResolveAssemblyReference.cache
+C:\Development\GEP\LoanBook.PaymentGateway.Core\obj\Debug\LoanBook.PaymentGateway.Core.dll
+C:\Development\GEP\LoanBook.PaymentGateway.Core\obj\Debug\LoanBook.PaymentGateway.Core.pdb

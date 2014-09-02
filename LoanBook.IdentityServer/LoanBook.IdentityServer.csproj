@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{43E12B71-4FBE-4CB4-8F19-29E22DB354D8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LoanBook.IdentityServer</RootNamespace>
+    <AssemblyName>LoanBook.IdentityServer</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi">
+      <HintPath>..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.0\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Authentication\AuthenticationController.cs" />
+    <Compile Include="Authentication\LoginResult.cs" />
+    <Compile Include="Authentication\SignInMessage.cs" />
+    <Compile Include="Base64Url.cs" />
+    <Compile Include="Configuration\AppBuilderExtensions\ConfigureDataProtectorExtension.cs" />
+    <Compile Include="Configuration\AppBuilderExtensions\ConfigureIdentityServerBaseUrlExtension.cs" />
+    <Compile Include="Configuration\AppBuilderExtensions\UseIdentityServerExtension.cs" />
+    <Compile Include="Configuration\AuthenticationOptions.cs" />
+    <Compile Include="Configuration\AutofacConfig.cs" />
+    <Compile Include="Configuration\CookieOptions.cs" />
+    <Compile Include="Configuration\HostDataProtector.cs" />
+    <Compile Include="Configuration\IDataProtector.cs" />
+    <Compile Include="Configuration\IdentityServerOptions.cs" />
+    <Compile Include="Configuration\IdentityServerServiceFactory.cs" />
+    <Compile Include="Configuration\LoginPageLink.cs" />
+    <Compile Include="Configuration\WebApiConfig.cs" />
+    <Compile Include="Connect\Endpoints\AuthorizeEndpointController.cs" />
+    <Compile Include="Connect\Endpoints\DiscoveryEndpointController.cs" />
+    <Compile Include="Connect\Models\AuthorizationCode.cs" />
+    <Compile Include="Connect\Models\AuthorizeError.cs" />
+    <Compile Include="Connect\Models\AuthorizeResponse.cs" />
+    <Compile Include="Connect\Models\ConsentInteractionResponse.cs" />
+    <Compile Include="Connect\Models\InteractionResponse.cs" />
+    <Compile Include="Connect\Models\JsonWebKeyDto.cs" />
+    <Compile Include="Connect\Models\LoginInteractionResponse.cs" />
+    <Compile Include="Connect\Models\Token.cs" />
+    <Compile Include="Connect\ResponseHandling\AuthorizeInteractionResponseGenerator.cs" />
+    <Compile Include="Connect\ResponseHandling\AuthorizeResponseGenerator.cs" />
+    <Compile Include="Connect\Results\AuthorizeImplicitFormPostResult.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Extensions\ClaimsExtensions.cs" />
+    <Compile Include="Extensions\HttpRequestMessageExtensions.cs" />
+    <Compile Include="Extensions\IDataProtectorExtensions.cs" />
+    <Compile Include="Extensions\NameValueCollectionExtensions.cs" />
+    <Compile Include="Extensions\OwinExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Hosting\AutofacContainerMiddleware.cs" />
+    <Compile Include="Hosting\AutofacScope.cs" />
+    <Compile Include="Hosting\CspReportController.cs" />
+    <Compile Include="Hosting\KatanaDependencyResolver.cs" />
+    <Compile Include="Hosting\NoCacheAttribute.cs" />
+    <Compile Include="Hosting\SecurityHeadersAttribute.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Flows.cs" />
+    <Compile Include="Models\Scope.cs" />
+    <Compile Include="Models\ScopeClaim.cs" />
+    <Compile Include="Models\UserConsent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScopeStore.cs" />
+    <Compile Include="Services\Default\DefaultTokenService.cs" />
+    <Compile Include="Services\IClientStore.cs" />
+    <Compile Include="Services\ICustomRequestValidator.cs" />
+    <Compile Include="Services\IScopeStore.cs" />
+    <Compile Include="Services\ITokenService.cs" />
+    <Compile Include="Services\IViewService.cs" />
+    <Compile Include="Validation\AuthorizeRequestValidator.cs" />
+    <Compile Include="Validation\ErrorTypes.cs" />
+    <Compile Include="Validation\ValidatedAuthorizeRequest.cs" />
+    <Compile Include="Validation\ValidationResult.cs" />
+    <Compile Include="Views\ActionResults\ErrorActionResult.cs" />
+    <Compile Include="Views\ActionResults\HtmlStreamActionResult.cs" />
+    <Compile Include="Views\ActionResults\LoginActionResult.cs" />
+    <Compile Include="Views\Embedded\Assets\AssetManager.cs" />
+    <Compile Include="Views\Embedded\EmbeddedAssetsViewService.cs" />
+    <Compile Include="Views\Embedded\EmbeddedAssetsViewServiceConfiguration.cs" />
+    <Compile Include="Views\ViewModels\CommonViewModel.cs" />
+    <Compile Include="Views\ViewModels\ErrorViewModel.cs" />
+    <Compile Include="Views\ViewModels\LoginViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Views\Embedded\Assets\app\app.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\custom.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\alerts.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\badges.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\bootstrap.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\breadcrumbs.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\button-groups.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\buttons.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\carousel.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\close.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\code.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\component-animations.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\dropdowns.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\forms.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\glyphicons.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\grid.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\input-groups.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\jumbotron.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\labels.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\list-group.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\media.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\mixins.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\modals.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\navbar.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\navs.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\normalize.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\pager.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\pagination.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\panels.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\popovers.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\print.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\progress-bars.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\responsive-utilities.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\scaffolding.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\tables.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\theme.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\thumbnails.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\tooltip.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\type.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\utilities.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\variables.less" />
+    <None Include="Views\Embedded\Assets\libs\bootstrap\less\wells.less" />
+    <None Include="Views\Embedded\Assets\scripts.js.bundle" />
+    <None Include="Views\Embedded\Assets\scripts.min.js.map" />
+    <None Include="Views\Embedded\Assets\styles.css.bundle" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Embedded\Assets\app\login.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Embedded\Assets\app\layout.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Embedded\Assets\app\app.css" />
+    <Content Include="Views\Embedded\Assets\app\app.js" />
+    <Content Include="Views\Embedded\Assets\libs\angular\angular.1.2.13.js" />
+    <Content Include="Views\Embedded\Assets\libs\angular\angular.1.2.13.min.js" />
+    <Content Include="Views\Embedded\Assets\libs\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Views\Embedded\Assets\libs\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Views\Embedded\Assets\libs\bootstrap\css\bootstrap.css" />
+    <Content Include="Views\Embedded\Assets\libs\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Views\Embedded\Assets\libs\bootstrap\custom.css" />
+    <Content Include="Views\Embedded\Assets\libs\bootstrap\custom.min.css" />
+    <Content Include="Views\Embedded\Assets\libs\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Views\Embedded\Assets\libs\bootstrap\js\bootstrap.js" />
+    <Content Include="Views\Embedded\Assets\libs\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Views\Embedded\Assets\libs\bootstrap\less\bootstrap.css" />
+    <Content Include="Views\Embedded\Assets\libs\bootstrap\less\bootstrap.min.css" />
+    <Content Include="Views\Embedded\Assets\libs\jquery\jquery-1.11.0.js" />
+    <Content Include="Views\Embedded\Assets\libs\jquery\jquery-1.11.0.min.js" />
+    <Content Include="Views\Embedded\Assets\scripts.js" />
+    <Content Include="Views\Embedded\Assets\scripts.min.js" />
+    <Content Include="Views\Embedded\Assets\styles.css" />
+    <Content Include="Views\Embedded\Assets\styles.min.css" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

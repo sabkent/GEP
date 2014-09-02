@@ -11,6 +11,8 @@
         {
             builder.RegisterType<ApplicationRepository>().As<IApplicationRepository>();
             builder.RegisterType<OriginationContext>().SingleInstance();
+
+            builder.RegisterType<ExperianService>().As<IBureauService>();
         }
     }
 }

@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\TakePayment.cs" />
+    <Compile Include="Events\CardSavedForApplication.cs" />
     <Compile Include="Events\PaymentFailed.cs" />
     <Compile Include="Events\PaymentTaken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

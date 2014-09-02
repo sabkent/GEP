@@ -28,7 +28,7 @@ namespace LoanBook.Collections.Endpoint
             _messageDispatcher.Listen();
 
             var content = container.Resolve<CollectionsContext>();
-            content.Debts.Add(new Debt { Id = Guid.Parse("7ff4e4f4-02b6-4161-9b12-b7a74170a9f7"), DebtorId = Guid.Parse("de1a4e89-339a-42b1-bff7-ef6130bfe80e"), Amount = 100 });
+            content.Debts.Add(new Debt { Id = Guid.Parse("7ff4e4f4-02b6-4161-9b12-b7a74170a9f7"), DebtorId = Guid.Parse("de1a4e89-339a-42b1-bff7-ef6130bfe80e"), Amount = 100, Due = DateTime.Now.Date});
             //content.Debts.Add(new Debt { Id = Guid.Parse("c574651f-6a72-41b8-a1d5-006d00c81d39"), DebtorId = Guid.Parse("1b9d1848-1ab3-4413-820a-5816b82b3b19"), Amount = 150 });
             content.SaveChanges();
 

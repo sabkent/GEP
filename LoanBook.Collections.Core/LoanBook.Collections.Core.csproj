@@ -43,6 +43,7 @@
     <Compile Include="Entities\Collection.cs" />
     <Compile Include="Entities\Debt.cs" />
     <Compile Include="Entities\Payment.cs" />
+    <Compile Include="IRescheduleDebts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\IQueryPayments.cs" />
     <Compile Include="Query\Projections\DuePayment.cs" />

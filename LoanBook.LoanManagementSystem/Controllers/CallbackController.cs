@@ -69,8 +69,9 @@ namespace LoanBook.LoanManagementSystem.Controllers
                 IssuerSigningToken = new X509SecurityToken(X509.LocalMachine.TrustedPeople.SubjectDistinguishedName.Find("CN=idsrv3test", false).First())
             };
 
-            var id = new JwtSecurityTokenHandler().ValidateToken(token, parameters);
-            return id.Claims.ToList();
+            //var id = new JwtSecurityTokenHandler().ValidateToken(token, parameters);
+            //return id.Claims.ToList();
+            return null;
         }
 
         //private string ParseJwt(string token)

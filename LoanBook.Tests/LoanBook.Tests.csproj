@@ -35,6 +35,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +54,10 @@
     <ProjectReference Include="..\LoanBook.Infrastructure.MassTransit\LoanBook.Infrastructure.MassTransit.csproj">
       <Project>{be06d35c-5674-41b4-88c7-0610c9600b22}</Project>
       <Name>LoanBook.Infrastructure.MassTransit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LoanBook.Infrastructure\LoanBook.Infrastructure.csproj">
+      <Project>{9e0920b4-4a80-4fb0-8b01-93cc9a47aeff}</Project>
+      <Name>LoanBook.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\LoanBook.Messaging\LoanBook.Messaging.csproj">
       <Project>{2519fd5a-45db-4ebe-a644-81d48666a148}</Project>

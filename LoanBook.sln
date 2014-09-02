@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanBook.Origination.Messaging", "LoanBook.Origination.Messaging\LoanBook.Origination.Messaging.csproj", "{704D1D4C-F43F-4F16-9F51-4E6BE138D36D}"
 EndProject
@@ -128,6 +128,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanBook.Tests", "LoanBook.Tests\LoanBook.Tests.csproj", "{3B770B63-DAE2-4591-B798-9BE888677CFF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanBook.Auth", "LoanBook.Auth\LoanBook.Auth.csproj", "{11BD0BD5-21F7-4941-8DDA-40D02291CFE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanBook.IdentityServer", "LoanBook.IdentityServer\LoanBook.IdentityServer.csproj", "{43E12B71-4FBE-4CB4-8F19-29E22DB354D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -323,6 +325,10 @@ Global
 		{11BD0BD5-21F7-4941-8DDA-40D02291CFE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11BD0BD5-21F7-4941-8DDA-40D02291CFE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11BD0BD5-21F7-4941-8DDA-40D02291CFE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43E12B71-4FBE-4CB4-8F19-29E22DB354D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43E12B71-4FBE-4CB4-8F19-29E22DB354D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43E12B71-4FBE-4CB4-8F19-29E22DB354D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43E12B71-4FBE-4CB4-8F19-29E22DB354D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -384,5 +390,6 @@ Global
 		{2237CA54-DBCC-4728-8CBE-6448E5C77F7B} = {57EB40C4-C12B-444B-8BA4-0E50A64961D7}
 		{BE06D35C-5674-41B4-88C7-0610C9600B22} = {441365A1-D8C2-4116-91F3-3089B858BA22}
 		{11BD0BD5-21F7-4941-8DDA-40D02291CFE0} = {284BA248-B402-475E-8C8F-E32A5AD984F7}
+		{43E12B71-4FBE-4CB4-8F19-29E22DB354D8} = {284BA248-B402-475E-8C8F-E32A5AD984F7}
 	EndGlobalSection
 EndGlobal

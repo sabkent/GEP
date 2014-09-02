@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .application-form{background-color:grey;width:300px;height:300px}
+    .application-form.ng-enter{-webkit-transition:0.5s linear all;transition:0.5s linear all;background:red;}
+    .application-form.ng-enter-active{background-color:grey}
+</style>
+<section data-ng-app="loanManagementSystem">
+    <section data-ng-view class="application-form" data-ng-cloak></section>
+</section>
+<script src="~/Scripts/jquery-2.1.1.min.js"></script>
+<script src="~/Scripts/jquery.signalR-2.1.1.min.js"></script>
+<script src="signalr/hubs"></script>
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/Scripts/angular-route.min.js"></script>
+<script src="~/Scripts/angular-animate.min.js"></script>
+<script>
+    var app = angular.module('loanManagementSystem', ['ngRoute', 'ngAnimate']);
+
+    app.value('signalRServer', '');
+
+    app.config(function($routeProvider, $sceDelegateProvider) {
+        $routeProvider.when('/', {
+            controller: 'applicationFormController',
+            templateUrl: '/templates/apply/applicationForm.html'
+        }).when('/card/:id', {
+            controller: 'cardDetailsController',
+            templateUrl: '/templates/apply/CardDetails.html'
+        });
+
+        $sceDelegateProvider.resourceUrlWhitelist(['self', 'http://localhost:4667/**']);
+    });
+
+    (function (ng, app, $) {
+
+        app.factory('signalRProxy', ['$rootScope', '$q', 'signalRServer', function ($rootScope, $q, signalRServer) {
+
+            var readyPromise = $q.defer();
+            var connection = $.hubConnection(signalRServer);
+            
+            connection.start().done(function () {
+                console.log('started'); readyPromise.resolve(); });
+
+            function ready() {
+                return readyPromise.promise;
+            };
+
+            function proxyFactory(hubName) {
+                    
+                var proxy = connection.createHubProxy(hubName);
+
+                return {
+                    on: function (eventName, callback) {
+                        proxy.on(eventName, function (result) {
+                            $rootScope.$apply(function () {
+                                if (callback)
+                                    callback(result);
+                            });
+                        });
+                    },
+                    invoke: function (methodName, callback, par) {
+                        proxy.invoke(methodName, par).done(function (result) {
+                            $rootScope.$apply(function () {
+                                if (callback) {
+                                    callback(result);
+                                }
+                            });
+                        });
+                        }
+                    }
+                };
+
+                return proxyFactory;
+            }
+        ]);
+
+        function applicationFormController($scope, $location, signalRProxy) {
+
+            var applicationProxy = signalRProxy('application');
+
+            $scope.apply = function () {
+                
+                applicationProxy.invoke('submitApplication');
+
+                applicationProxy.on('applicationSubmissionAccepted', function (result) {
+                    $location.path("/card/" + result);
+                });
+            };
+        };
+
+        app.controller('applicationFormController', applicationFormController);
+
+        function cardDetailsController($scope, $routeParams, signalRProxy) {
+            var applicationProxy = signalRProxy('application');
+            applicationProxy.on('cardSaved', function (result) {
+                console.log('cardSaved');
+            });
+            $scope.cardServerUrl = "http://localhost:4667/card/entry/" + $routeParams.id;
+        };
+
+        app.controller('cardDetailsController', cardDetailsController);
+
+    })(angular, angular.module('loanManagementSystem'), jQuery);
+
+    
+</script>

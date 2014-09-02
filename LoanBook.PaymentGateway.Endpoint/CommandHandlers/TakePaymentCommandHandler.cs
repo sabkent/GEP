@@ -11,9 +11,9 @@ namespace LoanBook.PaymentGateway.Endpoint.CommandHandlers
     {
         private readonly PaymentGatewayContext _paymentGatewayContext;
         private readonly IPublishEvents _eventsPublisher;
-        private readonly IPaymentGateway _paymentGateway;
+        private readonly ITakePaymentProvider _paymentGateway;
 
-        public TakePaymentCommandHandler(PaymentGatewayContext paymentGatewayContext, IPublishEvents eventsPublisher, IPaymentGateway paymentGateway)
+        public TakePaymentCommandHandler(PaymentGatewayContext paymentGatewayContext, IPublishEvents eventsPublisher, ITakePaymentProvider paymentGateway)
         {
             _paymentGatewayContext = paymentGatewayContext;
             _eventsPublisher = eventsPublisher;
@@ -31,8 +31,10 @@ namespace LoanBook.PaymentGateway.Endpoint.CommandHandlers
             };
 
             var directPaymentResponse = _paymentGateway.DirectPayment(directPaymentRequest);
-
-            _eventsPublisher.Publish(new PaymentTaken{CorrelationId = takePayment.CorrelationId, ProviderReference = directPaymentResponse.Reference, Succeeded = true});
+            if(directPaymentResponse.Succedded)
+                _eventsPublisher.Publish(new PaymentTaken{CorrelationId = takePayment.CorrelationId, ProviderReference = directPaymentResponse.Reference, Succeeded = true});
+            else
+                _eventsPublisher.Publish(new PaymentFailed{CorrelationId = takePayment.CorrelationId});
         }
     }
 }

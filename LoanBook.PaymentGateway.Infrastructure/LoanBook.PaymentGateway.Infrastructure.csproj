@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PaymentGateways\Kyriba\KyribaPaymentGateway.cs" />
     <Compile Include="PaymentGateways\Paypal\PaypalPaymentGateway.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
